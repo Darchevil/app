@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './todo-list-element.component.html',
   styleUrl: './todo-list-element.component.css',
 })
-export class TodoListElementComponent {}
+export class TodoListElementComponent {
+  //child
+  //Créer une task et l'envoie au parent todoList
+}
