@@ -7,8 +7,8 @@ export class Task implements ITask {
   title: string;
   done: boolean;
 
-  constructor() {
-    this.title = '';
+  constructor(title: string) {
+    this.title = title;
     this.done = false;
   }
 }

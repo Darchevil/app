@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>New task</h1>
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+  <div>
+    <h3>Choose a title :</h3>
+    <label for="title-task">Title Task</label>
+    <input
+      id="title-task"
+      type="text"
+      class="form-control"
+      formControlName="titleCreate"
+    />
+  </div>
+  <div
+    *ngIf="titleCreate?.invalid && (titleCreate?.dirty || titleCreate?.touched)"
+    class="alert alert-danger"
+  >
+    <div *ngIf="titleCreate?.errors?.['required']">Title required</div>
+    <div *ngIf="titleCreate?.errors?.['minlength']">
+      Task must be at least 4 charaters long
+    </div>
+  </div>
+</form>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClose()">Cancel</button>
+  <button type="submit" (click)="onSubmit()">Ok</button>
+</div>
