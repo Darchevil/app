@@ -22,7 +22,10 @@
               "projects/todo-src/src/favicon.ico",
               "projects/todo-src/src/assets"
             ],
-            "styles": ["projects/todo-src/src/styles.css"],
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/todo-src/src/styles.css"
+            ],
             "scripts": [],
             "server": "projects/todo-src/src/main.server.ts",
             "prerender": true,
@@ -81,7 +84,10 @@
               "projects/todo-src/src/favicon.ico",
               "projects/todo-src/src/assets"
             ],
-            "styles": ["projects/todo-src/src/styles.css"],
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/todo-src/src/styles.css"
+            ],
             "scripts": []
           }
         }

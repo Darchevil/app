@@ -1,3 +1,13 @@
 <ul *ngFor="let task of listTask">
-  <li>{{ task.title }}</li>
+  <li>
+    {{ task.title }}
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="delete a task"
+      (click)="deleteTask(task)"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </li>
 </ul>

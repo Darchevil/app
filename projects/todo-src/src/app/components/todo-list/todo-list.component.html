@@ -1,6 +1,8 @@
 <h1>To do today :</h1>
 
-<todo-list-element [listTask]="listTask"></todo-list-element>
+<todo-list-element
+  [listTask]="listTask"
+  (taskDeleted)="deleteTask($event)"
+></todo-list-element>
 
-<app-popup *ngIf="opened" (newTask)="addNewTask($event)"></app-popup>
 <button (click)="openPopup()">Create task</button>

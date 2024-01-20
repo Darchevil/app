@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { CommonModule, NgIf } from '@angular/common';
 import {
   FormControl,
@@ -33,14 +33,14 @@ export class PopupComponent {
 
   taskCreated?: Task;
   @Output() newTask = new EventEmitter<Task>();
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialogRef<PopupComponent>) {}
 
   get titleCreate() {
     return this.taskForm.get('titleCreate');
   }
 
   onClose() {
-    this.dialog.closeAll();
+    this.dialog.close();
   }
 
   onSubmit() {
@@ -49,6 +49,6 @@ export class PopupComponent {
       this.taskCreated = new Task(taskResult.titleCreate);
       this.newTask.emit(this.taskCreated);
     }
-    this.dialog.closeAll();
+    this.dialog.close();
   }
 }

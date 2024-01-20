@@ -1,20 +1,29 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Task } from '../../../types/task';
 import { NgFor } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'todo-list-element',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, MatButtonModule, MatIconModule],
   templateUrl: './todo-list-element.component.html',
   styleUrl: './todo-list-element.component.css',
 })
 export class TodoListElementComponent implements OnInit {
   //child
   @Input() listTask: Array<Task> = [];
+  @Output() taskDeleted = new EventEmitter<Task>();
+
   task: Task = { title: 'test', done: false };
 
   ngOnInit(): void {
     this.listTask.push(this.task);
+  }
+
+  deleteTask(taskToDelete: Task) {
+    this.taskDeleted.emit(taskToDelete);
   }
 }

@@ -22,14 +22,15 @@ export class TodoListComponent {
   constructor(private dialog: MatDialog) {}
   //Parent component
   //Possède une liste de task et c'est lui qui update les task et qui peut agir sur les tasks
-  // updateListTask(taskToPush: Task) {
-  //   this.listTask.push(taskToPush);
-  // }
   opened: boolean = false;
   listTask: Array<Task> = [];
   openPopup() {
-    this.opened = true;
-    // this.dialog.open(PopupComponent);
+    const dialogRef = this.dialog.open(PopupComponent);
+
+    dialogRef.componentInstance.newTask.subscribe((taskCreated: Task) => {
+      console.log('Nouvelle tache :', taskCreated);
+      this.listTask.push(taskCreated);
+    });
   }
   addNewTask(taskToCreate: Task) {
     this.listTask.push(taskToCreate);
@@ -37,5 +38,12 @@ export class TodoListComponent {
 
   onCloseClick(): void {
     this.dialog.closeAll();
+  }
+
+  deleteTask(taskToDelete: Task) {
+    const index = this.listTask.indexOf(taskToDelete);
+    if (index !== -1) {
+      this.listTask.splice(index, 1);
+    }
   }
 }
