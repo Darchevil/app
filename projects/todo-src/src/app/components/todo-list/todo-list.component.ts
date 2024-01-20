@@ -1,13 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoListElementComponent } from './todo-list-element/todo-list-element.component';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../popup/popup.component';
+import { Task } from '../../types/task';
 
 @Component({
   selector: 'app-todo-list',
   standalone: true,
-  imports: [TodoListElementComponent, NgFor, MatDialogModule],
+  imports: [
+    TodoListElementComponent,
+    NgFor,
+    MatDialogModule,
+    PopupComponent,
+    NgIf,
+  ],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css',
 })
@@ -18,10 +25,16 @@ export class TodoListComponent {
   // updateListTask(taskToPush: Task) {
   //   this.listTask.push(taskToPush);
   // }
-
+  opened: boolean = false;
+  listTask: Array<Task> = [];
   openPopup() {
-    this.dialog.open(PopupComponent);
+    this.opened = true;
+    // this.dialog.open(PopupComponent);
   }
+  addNewTask(taskToCreate: Task) {
+    this.listTask.push(taskToCreate);
+  }
+
   onCloseClick(): void {
     this.dialog.closeAll();
   }

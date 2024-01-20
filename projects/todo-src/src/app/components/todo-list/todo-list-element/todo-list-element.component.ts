@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Task } from '../../../types/task';
 import { NgFor } from '@angular/common';
 
@@ -11,7 +11,7 @@ import { NgFor } from '@angular/common';
 })
 export class TodoListElementComponent implements OnInit {
   //child
-  listTask: Array<Task> = [];
+  @Input() listTask: Array<Task> = [];
   task: Task = { title: 'test', done: false };
 
   ngOnInit(): void {

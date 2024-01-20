@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import {
   FormControl,
   FormGroup,
@@ -13,7 +13,13 @@ import { Task } from '../../types/task';
 @Component({
   selector: 'app-popup',
   standalone: true,
-  imports: [MatDialogModule, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    NgIf,
+  ],
   templateUrl: './popup.component.html',
   styleUrl: './popup.component.css',
 })
@@ -25,7 +31,7 @@ export class PopupComponent {
     ]),
   });
 
-  taskToCreate?: Task;
+  taskCreated?: Task;
   @Output() newTask = new EventEmitter<Task>();
   constructor(private dialog: MatDialog) {}
 
@@ -38,7 +44,11 @@ export class PopupComponent {
   }
 
   onSubmit() {
-    console.log('The form:', this.taskForm.value);
+    const taskResult = this.taskForm.value;
+    if (taskResult.titleCreate) {
+      this.taskCreated = new Task(taskResult.titleCreate);
+      this.newTask.emit(this.taskCreated);
+    }
     this.dialog.closeAll();
   }
 }
