@@ -12,16 +12,12 @@ import { EventEmitter } from '@angular/core';
   templateUrl: './todo-list-element.component.html',
   styleUrl: './todo-list-element.component.css',
 })
-export class TodoListElementComponent implements OnInit {
+export class TodoListElementComponent {
   //child
   @Input() listTask: Array<Task> = [];
   @Output() taskDeleted = new EventEmitter<Task>();
 
   task: Task = { title: 'test', done: false };
-
-  ngOnInit(): void {
-    this.listTask.push(this.task);
-  }
 
   deleteTask(taskToDelete: Task) {
     this.taskDeleted.emit(taskToDelete);

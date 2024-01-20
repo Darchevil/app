@@ -1,4 +1,5 @@
-<ul *ngFor="let task of listTask">
+<ul>
+  @for (task of listTask; track task.title) {
   <li>
     {{ task.title }}
     <button
@@ -10,4 +11,7 @@
       <mat-icon>delete</mat-icon>
     </button>
   </li>
+  } @empty {
+  <h4>no items</h4>
+  }
 </ul>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TodoListElementComponent } from './todo-list-element/todo-list-element.component';
 import { NgFor, NgIf } from '@angular/common';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { PopupComponent } from '../popup/popup.component';
 import { Task } from '../../types/task';
 
@@ -13,6 +14,7 @@ import { Task } from '../../types/task';
     NgFor,
     MatDialogModule,
     PopupComponent,
+    MatButtonModule,
     NgIf,
   ],
   templateUrl: './todo-list.component.html',
