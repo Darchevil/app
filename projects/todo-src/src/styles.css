@@ -2,3 +2,40 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    padding-left: 0%;
+    height: 100%;
+  }
+  
+  .bandeau-video {
+    position: relative;
+    height: 200px; /* Ajustez la hauteur selon vos besoins */
+    overflow: hidden;
+  }
+  
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .contenu-bandeau {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff; /* Couleur du texte */
+  }
+  
+  .contenu-bandeau h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  .contenu-bandeau p {
+    font-size: 1.2em;
+  }
